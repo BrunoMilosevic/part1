@@ -1,6 +1,6 @@
 import React from "react";
 
-const Statistics = ({ option, value }) => {
+const StatisticLine = ({ option, value }) => {
   return (
     <div>
       <p>
@@ -10,4 +10,4 @@ const Statistics = ({ option, value }) => {
   );
 };
 
-export default Statistics;
+export default StatisticLine;
