@@ -38,15 +38,22 @@ const App = () => {
           handleClick(setBad);
         }}
       />
-      {all > 0 ? (
+      {all ? (
         <>
           <h2>Statistics</h2>
-          <StatisticLine option="good" value={good} />
-          <StatisticLine option="neutral" value={neutral} />
-          <StatisticLine option="bad" value={bad} />
-          <StatisticLine option="all" value={all} />
-          <StatisticLine option="average" value={score / all} />
-          <StatisticLine option="positive" value={`${(good / all) * 100}%`} />
+          <table>
+            <tbody>
+              <StatisticLine option="good" value={good} />
+              <StatisticLine option="neutral" value={neutral} />
+              <StatisticLine option="bad" value={bad} />
+              <StatisticLine option="all" value={all} />
+              <StatisticLine option="average" value={score / all} />
+              <StatisticLine
+                option="positive"
+                value={`${(good / all) * 100}%`}
+              />
+            </tbody>
+          </table>
         </>
       ) : (
         <h2>No statistics to display</h2>
