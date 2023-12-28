@@ -23,22 +23,27 @@ const App = () => {
   function vote() {
     const newVotes = [...votes];
     newVotes[selected] += 1;
+
     setVotes(newVotes);
-    console.log(anecdotes[Math.max(votes)]);
   }
+
+  const votesCondition = `has
+  ${votes[selected] > 0 ? ` ${votes[selected]}` : " no votes"}
+  ${votes[selected] === 0 ? " " : votes[selected] > 1 ? " votes" : " vote"}`;
 
   return (
     <div>
       <h2>Anecdote of the day</h2>
       <p>
-        {anecdotes[selected]} has
-        {votes[selected] > 0 ? ` ${votes[selected]}` : " no votes"}
-        {votes[selected] === 0 ? " " : votes[selected] > 1 ? " votes" : " vote"}
+        {anecdotes[selected]} <br /> {votesCondition}
       </p>
       <button onClick={randomAnecdote}>Next Anecdote</button>
       <button onClick={vote}>Vote</button>
       <h2>Anecdote with most votes</h2>
-      <p>{anecdotes[votes[Math.max(votes)]]}</p>
+      {votes.some((element) => element > 0)
+        ? anecdotes[votes.indexOf(Math.max(...votes))]
+        : ""}
+      <p>Votes: {Math.max(...votes)}</p>
     </div>
   );
 };
